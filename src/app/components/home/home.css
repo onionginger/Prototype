@@ -1,0 +1,10 @@
+table td, th, tr {
+    border: 1px green dotted;
+    padding: 10px;
+}
+
+.tables {
+    margin: 20px;
+    font: 'Monaco';
+    align-items: center;
+}

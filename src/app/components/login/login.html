@@ -1,0 +1,51 @@
+<div class=loginform>
+<p>{{ isLogin ? 'Log in' : 'Sign up' }}</p>
+
+
+<form #authForm="ngForm" class="registrationform">
+
+     <div class="profile-pic">
+  <label class="-label" for="file">
+    <span class="glyphicon glyphicon-camera"></span>
+    <span>Change Image</span>
+  </label>
+  <input id="file" type="file" onchange="loadFile(event)"/>
+  <img src="../../../assets/placeholder.jpg">
+</div>
+
+<br>
+       <input 
+       placeholder="01-01-2000"
+       [style.display] = "isLogin ? 'none' : 'block'"
+    type="date"
+     id="date"
+      name="date"
+       [(ngModel)]="login.dob"
+       required
+       ><br>
+    <input 
+    type="email"
+     id="email"
+      name="email"
+       placeholder="Email..."
+       [(ngModel)]="login.email"
+       required
+       email><br>
+    <input type="password" 
+        id="password" 
+        name="password" 
+        placeholder="Password..."
+        [(ngModel)]="login.password" 
+        required
+        minlength="8"><br> 
+    <button (click)="onSubmit()"
+    [disabled]="authForm.invalid">Submit</button>
+</form>
+<p>{{ isLogin ? 'Not an existing user?' : 'Already signed up?'}}</p>
+<button type ="button" 
+name = "switch"
+ class="switchButton" 
+ (click)="switchModes()">
+    {{ isLogin ? 'Register here' : 'Login here' }}
+</button>
+</div>

@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+html {
+    background-color: bisque;
+    display: flex;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+
+input {
+    border-color: 2px aliceblue;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+button {
+    border: #949599;
+}
