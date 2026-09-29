@@ -5,7 +5,14 @@ import { inject } from '@angular/core';
 @Service()
 
 export class AuthenticationService {
-    isLoggedIn = false;
+
+    public isLoggedIn(): boolean {
+        const pass = localStorage.getItem('password');
+        const email = localStorage.getItem('email');
+
+        return pass && email;
+    }
+
 }
 
 
