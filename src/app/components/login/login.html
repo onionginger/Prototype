@@ -20,7 +20,6 @@
     type="date"
      id="date"
       name="date"
-       [(ngModel)]="login.dob"
        required
        ><br>
     <input 
@@ -28,14 +27,12 @@
      id="email"
       name="email"
        placeholder="Email..."
-       [(ngModel)]="login.email"
        required
        email><br>
     <input type="password" 
         id="password" 
         name="password" 
         placeholder="Password..."
-        [(ngModel)]="login.password" 
         required
         minlength="8"><br> 
     <button (click)="onSubmit()"

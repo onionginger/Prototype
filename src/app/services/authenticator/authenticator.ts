@@ -1,18 +1,20 @@
-import { Service } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { CanActivateChildFn, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { inject } from '@angular/core';
 
-@Service()
+@Injectable()
 
 export class AuthenticationService {
 
-    public isLoggedIn(): boolean {
-        const pass = localStorage.getItem('password');
-        const email = localStorage.getItem('email');
+//     public isLoggedIn(): boolean {
+//         const pass = localStorage.getItem('password');
+//         const email = localStorage.getItem('email');
 
-        return pass && email;
-    }
+//         return pass && email;
+//     }
+
+//     public hasRole(role: string): boolean {
+
+// }
 
 }
-
-

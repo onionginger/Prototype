@@ -3,7 +3,9 @@ import { FormsModule } from '@angular/forms';
 import { OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { rxResource } from '@angular/core/rxjs-interop';
-import { Authenticator } from '../../services/authenticator/authenticator'
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { AuthenticationService } from '../../services/authenticator/authenticator';
 
 @Component({
   imports: [FormsModule],
@@ -13,43 +15,38 @@ import { Authenticator } from '../../services/authenticator/authenticator'
 })
 export class Login implements OnInit{
 
-  constructor() {};
-
-  ngOnInit(): void {
-    
-  }
+  
 
   isLogin = false;
-  LoginValid = false;
+
+loginForm?: any;
+
+  constructor(private fb: FormBuilder, private authService : AuthenticationService, private router: Router) {}
+
+  ngOnInit(): void {
+    // this.loginForm = this.fb.group({
+    //   username: ['', Validators.required],
+    //   password: ['', Validators.required]
+    // });
+  }
+
+  onSubmit(): void {
+    if (this.loginForm.valid) {
+       // Call the authentication service's login method
+  //     if (this.authService.isLoggedIn()) {
+        // Navigate to the ProductListComponent upon successful login
+        this.router.navigate(['/chat']);
+    //  } else 
+
+//      }  
+    }
+
+
+  }
 
   switchModes() {
     this.isLogin = !this.isLogin;
-    console.log("switch")
-  }
-
-  onSubmit() {
-    if (this.isLogin) {
-
-    }
-    else {
-
-    }
-  }
-
-  saveLogin() {
-    let data = { id: 10, name:'zyz'};
-
-    localStorage.setItem('session', JSON.stringify(data))
-  }
-
-  storeUser() {
-
   }
 
 
-
-  login:any = {
-    email: "",
-    password: "",
-  }
 }

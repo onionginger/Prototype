@@ -14,41 +14,46 @@ let dummydata = [
   {name:"batman", email:"bruce@waynemansion.gt", password:"imasadorphan"}
 ]
 
-let LoggedIn = false;
-
-export const authGuard = () => {
-  if (LoggedIn) return true;
-  const router = inject(Router);
-  return router.createUrlTree(['/']);
-};
 
 
-export const adminChildGuard: CanActivateChildFn = (
-  childRoute: ActivatedRouteSnapshot,
-  state: RouterStateSnapshot,
-) => {
-  const authService = inject(AuthenticationService);
-  return authService.hasRole('admin');
-};
+// export const authGuard = () => {
+//   if (LoggedIn) return true;
+//   const router = inject(Router);
+//   return router.createUrlTree(['/']);
+// };
+
+
+// export const adminChildGuard: CanActivateChildFn = (
+//   childRoute: ActivatedRouteSnapshot,
+//   state: RouterStateSnapshot,
+// ) => {
+//   const authService = inject(AuthenticationService);
+//   return authService.hasRole('admin');
+// };
 
 
 
- const router = inject(Router);
-      const authService = inject(AuthenticationService);
-      if (!authService.isLoggedIn()) {
-        const loginPath = router.parseUrl("/login");
-        return new RedirectCommand(loginPath, {
-          skipLocationChange: true,
-        })
-      }
+//  const router = inject(Router);
+//       const authService = inject(AuthenticationService);
+//       if (!authService.isLoggedIn()) {
+//         const loginPath = router.parseUrl("/login");
+//         return new RedirectCommand(loginPath, {
+//           skipLocationChange: true,
+//         })
+//       }
 
 export const routes: Routes = [
+  {
+    path:'',
+    redirectTo:'login',
+  },
 
   {path: 'login', 
   component: Login},
   
   {path: 'chat',
-    component: Chat
+    component: Chat,
+    // canActivate: [authGuard],
   },
 
   {

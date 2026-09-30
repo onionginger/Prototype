@@ -1,10 +1,10 @@
-import { Service } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { io } from 'socket.io-client';
 const SERVER_URL = 'http://localhost:3000';
 
 
-@Service()
+@Injectable()
 export class Socket {
 
     private socket:any;
