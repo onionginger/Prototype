@@ -1,12 +1,22 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { ToastContainer } from './components/toast-container';
+import { AuthService } from './services/auth.service';
+import { SocketService } from './services/socket.service';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
-  templateUrl: './app.html',
+  imports: [RouterOutlet, ToastContainer],
+  template: `<router-outlet /><app-toasts />`,
 })
-export class App {
-  protected readonly title = signal('prototype');
+export class App implements OnInit {
+  private readonly auth = inject(AuthService);
+
+  constructor() {
+    inject(SocketService); // start the socket connection as soon as someone is signed in
+  }
+
+  ngOnInit(): void {
+    if (this.auth.isLoggedIn()) this.auth.refreshMe().subscribe({ error: () => {} });
+  }
 }
